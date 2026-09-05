@@ -1,50 +1,114 @@
-# Welcome to your Expo app 👋
+````markdown
+# 🥧 PieShack - E-Commerce App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile e-commerce app for pie lovers. This is the customer-facing app for ordering and browsing pies.
 
-## Get started
+> **Note on Scope:** This is 1 of 3 apps in the full PieShack system. This app handles the **Customer** experience. Two more apps are planned:
+>
+> 1. **Rider App** - For delivery men
+> 2. **Admin App** - For monitoring and managing products, orders, and users.
 
-1. Install dependencies
+### Current Status: Frontend Focus
 
-   ```bash
-   npm install
-   ```
+Backend is not yet connected. The app currently runs on static dummy data while the UI/UX is being built.
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🚀 Get Started
 
-In the output, you'll find options to open the app in a
+### Prerequisites
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Node.js 18+ / 20+ LTS
+- npm or yarn
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. Install dependencies
 
 ```bash
-npm run reset-project
+npm install
+```
+````
+
+### 2. Start the app
+
+```bash
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+To start with a clean cache (fixes most Metro bundler issues):
 
-## Learn more
+```bash
+npx expo start -c
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3. Run on your device
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Once the dev server starts, choose your environment:
 
-## Join the community
+- **Android:** Press `a` to open Android Emulator, or scan QR with Expo Go
+- **Web:** Press `w` to run in browser
+- **iOS:** Not yet supported
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🛠️ Tech Stack
+
+| Category       | Technology                                       |
+| :------------- | :----------------------------------------------- |
+| **Language**   | TypeScript                                       |
+| **Framework**  | React Native                                     |
+| **Tooling**    | Expo                                             |
+| **Navigation** | Expo Router (File-based routing)                 |
+| **Styling**    | NativeWind (Tailwind CSS for React Native)       |
+| **Backend**    | Supabase (Planned - currently using static data) |
+
+---
+
+## 📁 Project Architecture
+
+```
+app/
+  (tabs)/
+    _layout.tsx # Tab navigation definition
+    index.tsx # Landing / Home Screen
+    menuList.tsx # Menu list (Pie catalog)
+    cart.tsx # Cart screen
+    orders.tsx # Order history
+    profile.tsx # User profile
+
+assets/
+  images/ # App images and icons
+
+components/
+  ui/ # Reusable components (Button, Card, etc.)
+  home/ # Components used only on Landing
+  menu/ # Components for Menu list
+  cart/ # Components for Cart
+  orders/ # Components for Orders
+  profile/ # Components for Profile
+
+constants/
+  Theme.ts # Colors, spacing, typography
+  Pies.ts # Dummy pie data
+
+hooks/
+  usePieRepository.ts # Logic for fetching/managing pies
+
+.env.example
+babel.config.js
+tailwind.config.js
+metro.config.js
+```
+
+## 🗺️ Roadmap
+
+- Tab navigation and project structure[x]
+- Landing page UI (Greetings, Hero, Our Story)[x]
+- [ ] Menu List with filtering & search
+- [ ] Cart functionality
+- [ ] Supabase integration
+- [ ] Rider App
+- [ ] Admin Dashboard
+
+```
+
+```

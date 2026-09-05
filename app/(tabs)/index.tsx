@@ -1,14 +1,15 @@
 import { HeroBanner } from "@/components/ui/HeroBanner";
 import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FloatingFooter } from "../components/ui/FloatingFooter";
-import { GreetingSection } from "../components/ui/GreetingSection";
-import { HomeHeader } from "../components/ui/HomeHeader";
-import { OurStoryCard } from "../components/ui/OurStoryCard";
-import { PieCard } from "../components/ui/PieCard";
-import "../global.css";
-import { usePieRepository } from "../hooks/usePieRepository";
+import { FloatingFooter } from "../../components/ui/FloatingFooter";
+import { GreetingSection } from "../../components/ui/GreetingSection";
+import { HomeHeader } from "../../components/ui/HomeHeader";
+import { OurStoryCard } from "../../components/ui/OurStoryCard";
+import { PieCard } from "../../components/ui/PieCard";
+import "../../global.css";
+import { usePieRepository } from "../../hooks/usePieRepository";
 
+// This is the main/landing page of the app,
 export default function Index() {
   const { pies } = usePieRepository();
 
