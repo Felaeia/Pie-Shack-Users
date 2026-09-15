@@ -1,18 +1,23 @@
 import { Feather } from "@expo/vector-icons";
+import { useRouter } from "expo-router"; // Make sure this is imported!
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 export const FloatingFooter = () => {
-  // For the static mockup, we'll manage the active tab locally.
-  // In a real app, this would tie into your router (e.g., Expo Router).
   const [activeTab, setActiveTab] = useState("Home");
+  const router = useRouter();
 
   const tabs = [
-    { name: "Home", icon: "home" },
-    { name: "Menu", icon: "menu" },
-    { name: "Cart", icon: "shopping-bag" },
-    { name: "History", icon: "clock" },
+    { name: "Home", icon: "home", route: "/" },
+    { name: "Menu", icon: "menu", route: "/menuList" },
+    { name: "Cart", icon: "shopping-bag", route: "/cart" }, // Assuming you have a cart page
+    { name: "History", icon: "clock", route: "/orders" }, // Assuming you have a history page
   ] as const;
+
+  const handlePress = (tabName: string, route: string) => {
+    setActiveTab(tabName); // Updates the UI styling
+    router.push(route as any); // THIS is what actually changes the page
+  };
 
   return (
     <View className="absolute bottom-6 left-6 right-6 bg-[#3E2723] rounded-full flex-row justify-between items-center px-2 py-2 shadow-lg z-50">
@@ -22,7 +27,8 @@ export const FloatingFooter = () => {
         return (
           <TouchableOpacity
             key={tab.name}
-            onPress={() => setActiveTab(tab.name)}
+            // Updated this line to trigger navigation
+            onPress={() => handlePress(tab.name, tab.route)}
             className={`flex-row items-center rounded-full py-2.5 px-4 ${
               isActive ? "bg-white" : "bg-transparent"
             }`}
