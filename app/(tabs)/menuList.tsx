@@ -1,16 +1,13 @@
-import { HeroBanner } from "@/components/ui/HeroBanner";
 import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FloatingFooter } from "../../components/ui/FloatingFooter";
-import { GreetingSection } from "../../components/ui/GreetingSection";
 import { HomeHeader } from "../../components/ui/HomeHeader";
-import { OurStoryCard } from "../../components/ui/OurStoryCard";
 import { PieCard } from "../../components/ui/PieCard";
 import "../../global.css";
 import { usePieRepository } from "../../hooks/usePieRepository";
 
-// This is the main/landing page of the app,
-export default function Index() {
+// This is the Menu List page of the app
+export default function MenuList() {
   const { pies } = usePieRepository();
 
   return (
@@ -27,24 +24,23 @@ export default function Index() {
           justifyContent: "space-between",
           paddingHorizontal: 24,
         }}
-        // Everything above the pies goes into the ListHeaderComponent
+        // Header for the Menu page
         ListHeaderComponent={
-          <View>
-            <GreetingSection />
-            <HeroBanner />
-            {/* Future Category Filter will go here */}
-
-            {/* Best Sellers Header */}
-            <View className="flex-row justify-between items-end px-6 pt-4 pb-4">
-              <Text className="text-[20px] font-bold text-[#3E2723]">
-                Best Sellers
+          <View className="pt-6 pb-2">
+            <View className="flex-row justify-between items-end px-6 pb-4">
+              <Text className="text-[24px] font-bold text-[#3E2723]">
+                Our Full Menu
               </Text>
+              {/* Optional: Add a filter/sort button here if needed */}
               {/* <Pressable>
                 <Text className="text-[14px] font-medium text-[#8D6E63]">
-                  See all
+                  Filter
                 </Text>
               </Pressable> */}
             </View>
+
+            {/* Note: This is where the Future Category Filter mentioned in Index.tsx could go */}
+            {/* Example: <ScrollView horizontal className="px-6 mb-4">...</ScrollView> */}
           </View>
         }
         renderItem={({ item }) => (
@@ -53,15 +49,11 @@ export default function Index() {
             onAddToCart={(pie) => console.log("Added to cart:", pie.name)}
           />
         )}
-        ListFooterComponent={
-          <View className="px-6" style={{ marginBottom: 50 }}>
-            <OurStoryCard />
-          </View>
-        }
-        contentContainerStyle={{ paddingBottom: 24 }}
+        // Extra padding at the bottom so the FloatingFooter doesn't cover the last row
+        contentContainerStyle={{ paddingBottom: 100 }}
       />
 
-      {/* The Floating Footer */}
+      {/* The Floating Footer (with the hamburger menu active) */}
       <FloatingFooter />
     </SafeAreaView>
   );
